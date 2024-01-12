@@ -76,7 +76,7 @@ export class TeamsComponent implements OnInit {
             IsSuper: false,
             IsEliminated: false
           }
-        );
+        ); 
       }
     }
     this.saveTeams();
