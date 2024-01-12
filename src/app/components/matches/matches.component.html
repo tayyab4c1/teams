@@ -1,0 +1,111 @@
+<div class="head">
+    <h4>{{'matches' | uppercase}}</h4>
+</div>
+
+<div class="level" *ngIf="activeMatches() > 0">
+    <h5>LEVEL - {{level == 0 ? 1 : level}}</h5>
+</div>
+
+<div class="level" *ngIf="activeMatches() == 0 && yetToPlayTeams() ==1">
+    <h5>Tournament Completed</h5>
+    <button class="btn btn-info" (click)="showAllMatches()">All Matches</button>
+</div>
+
+<div class="match-box">
+    <div class="wrapper">
+        <div *ngFor="let m of matches; let i=index;">
+            <div *ngIf="m.Level == level || viewAllMatches">
+                <div class="match">
+                    <div class="match-head">
+                        <p *ngIf="i !== teams.length-2">MATCH - {{i+1}}</p>
+                        <p *ngIf="i === teams.length-2" class="final">FINAL <span>(MATCH - {{i+1}})</span></p>
+                    </div>
+                    <div class="teams">
+                        <p>T - {{m.T1.T}}</p>
+                        <p class="vs">VS</p>
+                        <p>T - {{m.T2.T}}</p>
+                    </div>
+                    <div class="players">
+                        <div class="team">
+                            <div class="t-play">
+                                <p class="p1">{{m.T1.P1.Name}}</p>
+                                <p class="p2">{{m.T1.P2.Name}}</p>
+                            </div>
+                            <div class="score">{{m.Score?.Score1}}</div>
+                            <div *ngIf="i+1 === teams.length-1">
+                                <div class="t-cup" *ngIf="m.Won == 'T1'">
+                                    <i class="fa fa-trophy" aria-hidden="true"></i>
+                                </div>
+                                <div class="cry" *ngIf="m.Won == 'T2'">😭</div>
+                            </div>
+                            <div *ngIf="i+1 !== teams.length-1">
+                                <div class="cry" *ngIf="m.Won == 'T1'">✌</div>
+                                <div class="cry" *ngIf="m.Won == 'T2'">👊</div>
+                            </div>
+                        </div>
+                        <div class="team sec">
+                            <div class="t-play">
+                                <p class="p1">{{m.T2.P1.Name}}</p>
+                                <p class="p2">{{m.T2.P2.Name}}</p>
+                            </div>
+                            <div class="score">{{m.Score?.Score2}}</div>
+                            <div *ngIf="i+1 === teams.length-1">
+                                <div class="t-cup" *ngIf="m.Won == 'T2'">
+                                    <i class="fa fa-trophy" aria-hidden="true"></i>
+                                </div>
+                                <div class="cry" *ngIf="m.Won == 'T1'">😭</div>
+                            </div>
+                            <div *ngIf="i+1 !== teams.length-1">
+                                <div class="cry" *ngIf="m.Won == 'T1'">👊</div>
+                                <div class="cry" *ngIf="m.Won == 'T2'">✌</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="live" *ngIf="m.MatchID === currentMatch?.MatchID"></div>
+                </div>
+                <div class="acc-panel">
+                    <div class="start">
+                        <button class="btn btn-success" 
+                                type="button" 
+                                [disabled]="isDisabled(m) || m.IsMatchOver"
+                                (click)="startMatch(m.MatchID)">Start
+                        </button>
+                    </div>
+        
+                    <!-- <div class="stop">
+                        <button class="btn btn-danger" 
+                                type="button" 
+                                [disabled]="isMatchLive && m !== currentMatch"
+                                (click)="stopMatch()">Stop
+                        </button>
+                    </div> -->
+    
+                    <div class="score">
+                        <button class="btn btn-warning" 
+                                type="button" 
+                                [disabled]="(isMatchLive && m.MatchID !== currentMatch?.MatchID) || m.IsMatchOver"
+                                (click)="onScoreBtnClick(m)">Score
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="false">
+    {{'level: ' +level}}
+    {{'yetToPlayMatchesCount: ' + yetToPlayTeams()}}
+</div>
+<div class="sub-btn">
+    <button *ngIf="yetToPlayTeams() >= 2"
+            class="btn" 
+            type="button" 
+            (click)="goToNextLevel()"
+            [disabled]="yetToPlayMatchesCount>0">Level - {{level+1}}
+        </button>
+
+<div *ngIf="showHideScoreCard">
+    <app-score (scoreUpdated)="onScoreUpdated($event)"
+                [match]="matchToUpdateScore"
+                [matchStatus]="matchStatus"></app-score>
+</div>

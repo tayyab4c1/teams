@@ -1,0 +1,46 @@
+<div class="nav-head" *ngIf="router.url !== '/login'">
+    <div class="nav-row">
+        <div class="menu">
+            <i class="fa menu-icon" 
+               aria-hidden="true" 
+               (click)="onMenuClick()"
+               [ngClass]="{'menu-icon-active': isMenuActive, 'fa-times' : isMenuActive, 'fa-bars':!isMenuActive}">
+            </i>
+        </div>
+        <div class="t-id" *ngIf="showHideTournamrndId()">
+            <p>{{tournamentId}}</p>
+        </div>
+        <div class="log-out">
+            <i class="fa fa-sign-out logout-icon" 
+               aria-hidden="true" 
+               (click)="logOut()">
+            </i>
+        </div>
+    </div>
+</div>
+
+<div class="main-div">
+    <div class="content-div">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<div [ngClass]="{'slide-active': isMenuActive,  'slide':!isMenuActive}">
+    <div class="list">
+        <ul>
+            <li [routerLink]="['/player-entry']" [routerLinkActive]="['is-active']">Home</li>
+            <li [routerLink]="['/teams']" [routerLinkActive]="['is-active']">Super Team</li>
+            <li [routerLink]="['/player-list']" [routerLinkActive]="['is-active']">Players</li>
+            <li [routerLink]="['/teams']" [routerLinkActive]="['is-active']">Teams</li>
+            <li [routerLink]="['/matches']" [routerLinkActive]="['is-active']">Matches</li>
+            <li [routerLink]="['/t-list']" [routerLinkActive]="['is-active']">Tournaments</li>
+        </ul>
+    </div>
+    <div class="close" (click)="onMenuClick()">
+        <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+    </div>
+</div>
+
+<div class="ftr">
+    <p>© Tayyab </p>
+</div>

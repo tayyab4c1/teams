@@ -1,0 +1,95 @@
+<div class="head">
+    <h4>{{'tournaments' | uppercase}}</h4>
+</div>
+<!-- data: {{tournaments | json}} -->
+<div class="t-table">
+    <table class="table table-striped">
+        <tbody>
+            <tr *ngFor="let t of tournaments; let i=index;">
+                <th scope="row" style="padding-left: 2rem;cursor: pointer;" (click)="show(t)">{{t.DOT}}</th>
+                <td>
+                    <i class="fa fa-trash" aria-hidden="true" (click)="deleteTournament(t.TournamentId)"></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button class="btn btn-info" (click)="goToHome()">Home</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf="tournament" class="t-container">
+    <!-- <h4>Date : {{tournament.DOT}}</h4> -->
+    <h4>Players</h4>
+    <table class="table table-striped">
+        <tbody>
+            <tr *ngFor="let p of tournament.Players">
+                <td>
+                    {{p.Name}}
+                </td>
+            </tr>
+        </tbody> 
+    </table>
+
+    <h4>Teams</h4>
+    <table class="table table-striped">
+        <tbody>
+            <tr *ngFor="let t of tournament.Teams; let i=index;">
+                <td>{{i+1}}</td>
+                <td>{{ t.P1.Name + ' ('+t.P1.ID+')'}}</td>
+                <td>{{ t.P2.Name + ' ('+t.P2.ID+')'}}</td>
+            </tr>
+        </tbody> 
+    </table>
+
+    <h4>Matches</h4>
+    <div *ngFor="let m of tournament.Matches; let i=index;" class="match-box">
+        <h5>Match  {{i+1}}</h5>
+        <p>{{ 'Team '+m.T1.T}}</p> 
+        <p>VS</p>
+        <p>{{ 'Team '+m.T2.T}}</p>
+        <h5>Score</h5>
+        <p>{{'Team '+m.T1.T + ' : '+ m.Score?.Score1}}</p>
+        <p>{{'Team '+m.T2.T + ' : '+ m.Score?.Score2}}</p>
+        <h5>Team {{m.Won === 'T1' ? m.T1.T: m.T2.T}} won the match</h5>
+    </div>
+
+    <div class="win-run">
+        <h4>Winners</h4>
+    <h5>
+        Team - {{tournament.Matches[tournament.Matches.length-1].Won === 'T1' ?
+        tournament.Matches[tournament.Matches.length-1].T1.T: tournament.Matches[tournament.Matches.length-1].T2.T}}
+    </h5>
+    <p>
+        {{tournament.Matches[tournament.Matches.length-1].Won === 'T1' ?
+        tournament.Matches[tournament.Matches.length-1].T1.P1.Name +' - '+
+        tournament.Matches[tournament.Matches.length-1].T1.P2.Name
+        : tournament.Matches[tournament.Matches.length-1].T2.P1.Name +' - '+
+        tournament.Matches[tournament.Matches.length-1].T2.P2.Name}}
+    </p>
+
+    <h4>Runners</h4>
+    <h5>
+        Team - {{tournament.Matches[tournament.Matches.length-1].Won !== 'T1' ?
+        tournament.Matches[tournament.Matches.length-1].T1.T: tournament.Matches[tournament.Matches.length-1].T2.T}}
+    </h5>
+    <p>
+        {{tournament.Matches[tournament.Matches.length-1].Won !== 'T1' ?
+        tournament.Matches[tournament.Matches.length-1].T1.P1.Name +' - '+
+        tournament.Matches[tournament.Matches.length-1].T1.P2.Name
+        : tournament.Matches[tournament.Matches.length-1].T2.P1.Name +' - '+
+        tournament.Matches[tournament.Matches.length-1].T2.P2.Name}}
+    </p>
+    </div>
+</div>
+
+<br>
+<div>
+    *********************
+</div>
+
+<div class="to-top"(click)="scrollToTop()">
+    <i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>
+</div>

@@ -1,0 +1,51 @@
+<div class="head">
+    <h4>{{'Players List' | uppercase}}</h4>
+</div>
+
+<div class="player-tbl">
+    <table class="table table-striped">
+        <thead class="sticky-thead">
+            <tr>
+                <th scope="col" style="padding-left: 2rem;">#</th>
+                <th scope="col">Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let player of players; let i=index;">
+                <th scope="row" style="padding-left: 2rem;">{{i+1}}</th>
+                <td>{{player.Name}}</td>
+                <td style="width: 10%;">
+                    <i class="fa fa-trash del" 
+                       aria-hidden="true"
+                       (click)="deletePlayer(player)"></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="add-player">
+                    <input #appNewPlayer type="text" id="appNewPlayer"
+                           *ngIf="enableAddPlayer" 
+                           (blur)="onAddPlayerInputBlur()"
+                           [(ngModel)]="newPlayer">
+                    <button class="btn" 
+                            *ngIf="!enableAddPlayer"
+                            type="button"
+                            (click)="addPlayer()">
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="error" *ngIf="players.length % 2 === 1">
+    <p>Add one more player</p>
+</div>
+
+<div class="sub-btn">
+    <button class="btn" 
+            type="button" 
+            [disabled]="players.length % 2 === 1"
+            (click)="generateTeams()">Generate Teams
+    </button>
+</div>

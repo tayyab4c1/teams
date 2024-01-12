@@ -1,0 +1,55 @@
+<div class="head">
+    <h4>{{'Player Entry' | uppercase}}</h4>
+</div>
+
+<div class="first-panel" *ngIf="!isTournamentStarted">
+    <p>Enter Number of Players</p>
+    <div class="p-count">
+        <input type="number" class="" [(ngModel)]="playersCount" (keyup)="generatePlayersArray()">
+    </div>
+</div>
+<div class="error" *ngIf="errorMessage && playersCount">
+    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+    <p>{{errorMessage}}
+    <p>
+</div>
+<div class="player-entry" *ngIf="showPlayerForm && playersCount">
+    <form [formGroup]='fixForm' (ngSubmit)="onSubmit()">
+        <div formArrayName="players" class="entry-form">
+            <table class="table table-sm">
+                <thead class="bg-primary">
+                    <tr class="bg-primary">
+                        <th scope="col">#</th>
+                        <th scope="col">NAME</th>
+                    </tr>
+                </thead>
+                <tr *ngFor="let player of players.controls; let i=index">
+                    <td>
+                        <div class="player-id">
+                            {{i+1}}
+                        </div>
+                    </td>
+                    <td>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            [formControlName]="i" 
+                            id="{{'a'+i}}"
+                            placeholder="{{'Player '+ (i+1)}}">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="sub-btn">
+            <button class="btn" 
+                    type="button" 
+                    (click)="onSubmit()"
+                    [disabled]="!showPlayerForm">Done
+            </button>
+        </div>
+    </form>
+</div>
+<div class="goto-teams" *ngIf="isTournamentStarted">
+    <p>Player Entry completed.</p>
+    <button class="btn btn-success" (click)="gotoPlayersList()">Players</button>
+</div>

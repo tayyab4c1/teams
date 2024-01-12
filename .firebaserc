@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "firsthost-1691c"
+  },
+  "targets": {
+    "firsthost-1691c": {
+      "hosting": {
+        "myApp": [
+          "firsthost-1691c"
+        ]
+      }
+    }
+  }
+}

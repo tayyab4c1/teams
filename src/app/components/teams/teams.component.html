@@ -1,0 +1,44 @@
+<div class="head">
+    <h4>{{'teams' | uppercase}}</h4>
+</div>
+<div class="team-box">
+    <div class="wrapper">
+        <!-- Super Team -->
+        <div class="team sup" *ngIf="superTeam">
+            <div class="team-head">
+                <h4>SUPER TEAM {{'('+superTeam.T+')'}}</h4>
+            </div>
+            <div class="team-players">
+                <div class="first-play">
+                    <p>{{superTeam.P1.Name}}</p>
+                </div>
+                <div class="sec-play">
+                    <p>{{superTeam.P2.Name}}</p>
+                </div>
+            </div>
+        </div>
+        <div *ngFor="let team of teams; let i=index">
+            <div class="team" *ngIf="team!==superTeam">
+                <div class="team-head">
+                    <h4>TEAM - {{i+1}}</h4>
+                </div>
+                <div class="team-players">
+                    <div class="first-play">
+                        <p>{{team.P1.Name}}</p>
+                    </div>
+                    <div class="sec-play">
+                        <p>{{team.P2.Name}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="sub-btn">
+    <button 
+            class="btn" 
+            type="button" 
+            (click)="generateMatches()"> Matches
+        </button>
+</div>

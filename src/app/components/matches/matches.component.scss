@@ -1,0 +1,180 @@
+.head {
+    background-color: #1B9AAA;
+    height: 3rem;
+    border-radius: 2rem 2rem 0 0;
+    text-align: center;
+    color: #F8FFE5;
+
+    h4 {
+        padding-top: 0.5rem;
+        font-weight: 700;
+    }
+}
+
+.level {
+    background-color: #cfd0d0;
+    text-align: center;
+    font-weight: 700;
+}
+
+.match-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: auto;
+    margin-top: 1rem;
+
+    .wrapper {
+        height: 65vh;
+    }
+
+    .match {
+        height: 12rem;
+        width: 85vw;
+        margin-top: 1.5rem;
+        background-color: #1599c9;
+        box-shadow: 1px 1px 10px 1px #a5a6a6;
+
+        .match-head {
+            text-align: center;
+            color: #ffffff;
+            background-color: #0f80aa;
+            transform: rotate(270deg);
+            width: 12rem;
+            position: relative;
+            top: 5.1rem;
+            right: 6.3rem;
+            border-radius: 1rem;
+
+            p {
+                font-weight: 600;
+                font-size: 1.2rem;
+            }
+
+            span {
+                font-size: small;
+            }
+
+            p.final {
+                color: gold;
+            }
+        }
+
+        .teams {
+            text-align: center;
+            color: #ffffff;
+            background-color: #0f80aa;
+            height: 12rem;
+            width: fit-content;
+            position: relative;
+            bottom: 2.8rem;
+            left: 77vw;
+            border-radius: 1rem;
+            padding: 0.2rem;
+
+            p {
+                font-weight: 600;
+                font-size: 1.2rem;
+                padding-top: 1rem;
+            }
+
+            p.vs {
+                font-size: 0.8rem;
+                padding: 1.5rem 0 1rem 0;
+            }
+        }
+
+        .players {
+            text-align: center;
+            position: relative;
+            bottom: 13.5rem;
+            line-height: 1rem;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.2rem;
+
+            .team {
+                text-align: left;
+                margin-left: 1rem;
+                display: flex;
+
+                .t-play {
+                    width: 70%;
+                }
+
+                .t-cup {
+                    font-size: 2.5rem;
+                    color: goldenrod;
+                }
+
+                .score {
+                    width: 8%;
+                    align-self: center;
+                    margin-bottom: 1rem;
+                }
+
+                .cry {
+                    font-size: xx-large;
+                    margin-top: 1rem;
+                }
+            }
+
+            .sec {
+                margin-top: 1rem;
+            }
+
+            .final {
+                background-color: gold;
+                height: 1.5rem;
+                width: 10rem;
+                margin-left: 6rem;
+                border-radius: 1rem;
+            }
+        }
+
+        $t: 1.5s;
+
+        .live {
+            position: relative;
+            bottom: 12.1rem;
+            background-color: #ffc43d;
+            height: 0.3rem;
+            width: 2rem;
+            border-radius: 1rem;
+            transform: translate(calc(-1*(45vw - 100%)));
+            animation: move $t ease-in-out infinite alternate;
+        }
+    }
+
+    .acc-panel {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 0.5rem;
+    }
+}
+
+.sub-btn {
+    text-align: center;
+    position: fixed;
+    width: 99vw;
+    bottom: 6vh;
+
+    button {
+        border-radius: 0;
+        background-color: #02c39a;
+        color: #f8f8f8;
+        font-weight: 700;
+        width: 75vw;
+    }
+}
+
+@keyframes move {
+    from {
+        transform: translate(calc(7vw - 100%))
+    }
+
+    to {
+        transform: translate(calc(78vw - 100%))
+    }
+}

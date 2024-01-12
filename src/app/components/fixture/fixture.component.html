@@ -1,0 +1,124 @@
+<div class="div-top-border main-con">
+    <div class="container-fluid div-top-border">
+        <div class="row alert alert-secondary div-top-border">
+            <div class="col-5" style="padding-top: 0.5rem;">
+                <h6>Number of players</h6>
+            </div>
+            <div class="col-4">
+                <input type="number" class="form-control" [(ngModel)]="playersCount" style="width:7rem;">
+            </div>
+            <div class="col-3">
+                <button class="btn btn-info" type="button" (click)="generatePlayersArray()"
+                    style="border-radius: 7rem; font-size: 1.4rem;">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+
+        <div *ngIf="true">
+            <h5>data from DB</h5>
+            {{readData | json}}
+        </div>
+        <div class="row" *ngIf="errorMessage">
+            <div class="alert alert-danger" role="alert">
+                <h5>
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"
+                        style="padding-right: 1rem;"></i>{{errorMessage}}
+                </h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <form [formGroup]='fixForm' (ngSubmit)="onSubmit()">
+            <div formArrayName="players" class="">
+                <h3 *ngIf="showPlayerForm">Enter Players Name</h3>
+                <div class="row p-1" *ngFor="let player of players.controls; let i=index" style="padding-top: 0.5rem;">
+                    <div class="col-3 num-circle">
+                        <label for="{{'p'+i}}">
+                            Player{{" "}}{{i+1}}:
+                        </label>
+                    </div>
+                    <div class="col-9">
+                        <input type="text" class="form-control" [formControlName]="i" id="{{'a'+i}}">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" *ngIf="showPlayerForm">
+        <div class="row">
+            <div class="col-12 p-3" style="text-align: center;">
+                <button class="btn btn-primary btn-lg" type="submit" (click)="onSubmit()">
+                    <i class="fa fa-share" aria-hidden="true"></i>
+                    Generate Teams</button>
+            </div>
+        </div>
+
+        <div class="row" *ngFor="let pair of teams; let i=index">
+            <div class="col-2">
+                <h4><span class="badge bg-secondary">Team{{i+1}}</span></h4>
+            </div>
+            <div class="col-5" style="text-align: center;">
+                <span class="badge badge-pill bg-info team-badge">{{pair[1]}}</span>
+            </div>
+            <div class="col-5">
+                <span class="badge badge-pill bg-info team-badge">{{pair[2]}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" *ngIf="teams.length>0">
+        <div class="row">
+            <div class="col-12 p-3" style="text-align: center;">
+                <button class="btn btn-primary btn-lg" type="button" (click)="generateFixture()">
+                    <i class="fa fa-share" aria-hidden="true"></i>
+                    Generate Matches</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container alert alert-secondary" role="alert" *ngIf="superTeam" style="margin-top: 1rem;">
+        <div class="row sup-team">
+            <h4>Super Team - (Team {{superTeam['T']}})</h4>
+            <div class="col-2" style="text-align: center;">
+                <i class="fa fa-star" aria-hidden="true" style="font-size: xx-large;"></i>
+            </div>
+            <div class="col-5" style="text-align: center;">
+                <h3><span class="badge badge-pill bg-info team-badge">{{superTeam[1]}}</span></h3>
+            </div>
+            <div class="col-5">
+                <h3><span class="badge badge-pill bg-info team-badge">{{superTeam[2]}}</span></h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="text-align: center; padding-bottom: 2rem;">
+        <div class="alert alert-primary row" role="alert" *ngFor="let m of fixL1; let i=index;">
+            <div class="col-12 alert alert-secondary">
+                <h5>MATCH - {{i+1}}</h5>
+            </div>
+
+            <div class="col-2">
+                <h4><span class="badge bg-secondary">T - {{m['T1']['T']}}</span></h4>
+            </div>
+            <div class="col-5" style="text-align: center;">
+                <span class="badge badge-pill bg-info team-badge">{{m['T1'][1]}}</span>
+            </div>
+            <div class="col-5">
+                <span class="badge badge-pill bg-info team-badge">{{m['T1'][2]}}</span>
+            </div>
+            <h4 style="padding-left: 6rem;"><i class="fa fa-times" aria-hidden="true"></i></h4>
+            <div class="col-2">
+                <h4><span class="badge bg-secondary">T - {{m['T2']['T']}}</span></h4>
+            </div>
+            <div class="col-5" style="text-align: center;">
+                <span class="badge badge-pill bg-info team-badge">{{m['T2'][1]}}</span>
+            </div>
+            <div class="col-5">
+                <span class="badge badge-pill bg-info team-badge">{{m['T2'][2]}}</span>
+            </div>
+        </div>
+    </div>
+</div>

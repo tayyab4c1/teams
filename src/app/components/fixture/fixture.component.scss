@@ -1,0 +1,42 @@
+body {
+    font-family: sans-serif;
+}
+
+.main-con {
+    background-color: white;
+    margin-top: 3rem;
+    min-height: 100vh;
+}
+
+.c1 {
+    background-color: aquamarine;
+}
+
+.c2 {
+    background-color: rgb(199, 173, 173);
+}
+
+.num-circle {
+    background-color: #26edb9;
+    border-radius: 5rem;
+    padding: 0.3rem 0 0 1rem;
+}
+
+.match-circle {
+    border-radius: 5rem;
+}
+
+.sup-team {
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
+.team-badge {
+    width: 100%;
+    height: 74%;
+    font-size: 0.9rem;
+}
+
+.div-top-border {
+    border-radius: 3rem 3rem 0 0;
+}

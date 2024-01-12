@@ -1,0 +1,30 @@
+<div class="outer">
+    <div class="center">
+        <div class="head">
+            <p>Score</p>
+            <i class="fa fa-times" aria-hidden="true" (click)="closeScoreWindow()"></i>
+        </div>
+        <div class="content">
+            <div class="first">
+                <p>Team - {{match.T1.T}}</p>
+                <input type="number" 
+                       [(ngModel)]="score.Score1" 
+                       (keyup)="OnBlur(match.T1.T,match.T2.T)"
+                       [disabled]="!matchStatus">
+            </div>
+            <div class="sec">
+                <p>Team - {{match.T2.T}}</p>
+                <input type="number" 
+                       [(ngModel)]="score.Score2" 
+                       (keyup)="OnBlur(match.T1.T,match.T2.T)"
+                       [disabled]="!matchStatus">
+            </div>
+        </div>
+        <div class="msg">
+            <p>{{matchStatusMsg}}</p>
+        </div>
+        <div class="done">
+            <button class="btn" (click)="onScoreUpdated()" [disabled]="!matchStatus">{{doneBtnLabel}}</button>
+        </div>
+    </div>
+</div>

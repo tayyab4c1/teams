@@ -1,0 +1,17 @@
+<div class="outer">
+    <div class="inner">
+        <div class="login-head">
+            <h5>Login</h5>
+        </div>
+        <div class="login-body">
+            <input class="form-control" type="password" name="pass" id="pass" [(ngModel)]="passcode">
+            <div class="error" *ngIf="errorMsg">
+                <i *ngIf="errorMsg != ' '" class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                <p> {{errorMsg}}<p>
+            </div>
+        </div>
+        <div class="login-foot">
+            <button class="btn" type="submit" (click)="onLogin()">Login</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,149 @@
+/*
+.div-top-border {
+    border-radius: 3rem 3rem 0 0;
+    margin-top: -3rem
+}
+
+.num-circle {
+    background-color: #26edb9;
+    border-radius: 5rem;
+    padding: 0.3rem 0 0 1rem;
+}
+
+.submit-btn {
+    position: fixed;
+    top: 87vh;
+    width: 100%;
+}
+
+.header {
+    position: fixed;
+    top: 12vh;
+    width: 100%;
+}
+
+.head{
+    text-align: center;
+    z-index: 1;
+    position: fixed;
+    top: 4.7vh;
+}
+*/
+
+.head {
+    background-color: #1B9AAA;
+    height: 3rem;
+    border-radius: 2rem 2rem 0 0;
+    text-align: center;
+    color: #F8FFE5;
+
+    h4 {
+        padding-top: 0.5rem;
+        font-weight: 700;
+    }
+}
+
+.first-panel {
+    .p-count{
+        width: 30%;
+    }
+    button {
+        height: 2rem;
+        width: 3rem;
+        background-color: #02c39a;
+        border-radius: 2rem;
+
+        i {
+            bottom: 0.4rem;
+            position: relative;
+            color: #f0f3bd;
+        }
+    }
+
+    input {
+        width: 5rem;
+        border: none;
+        border-top: 2px solid #FFC43D;
+        border: 2px solid #FFC43D;
+    }
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-top: 1.5rem;
+
+    * {
+        margin: 0.5rem;
+    }
+}
+
+.error {
+    background-color: #ef767a;
+    display: flex;
+    align-items: center;
+    height: 3rem;
+
+    i {
+        margin-left: 0.5rem;
+        color: #F8FFE5;
+        padding: 0.5rem 1rem 1rem 0;
+        font-size: 1.5rem;
+    }
+
+    p {
+        color: #F8FFE5;
+        padding-top: 1rem;
+    }
+}
+
+.entry-form {
+    width: 90vw;
+    margin-left: 4vw;
+    text-align: center;
+
+    input {
+        border: none;
+        border-radius: 0;
+        border-bottom: 2px solid #1B9AAA;
+        width: 75vw;
+    }
+
+    ::placeholder {
+        color: #a9d6e5;
+        font-size: 0.9rem;
+    }
+
+    table {
+        overflow-y: scroll;
+        height: 65vh;
+        display: block;
+    }
+}
+
+.player-id {
+    background-color: #caf0f8;
+    color: #1B9AAA;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 2rem;
+}
+
+.sub-btn{
+    text-align: center;
+    position: fixed;
+    width: 99vw;
+    bottom: 6vh;
+    button{
+        border-radius: 0;
+        background-color: #02c39a;
+        color: #f8f8f8;
+        font-weight: 700;
+        width: 75vw;
+    }
+}
+
+.goto-teams{
+    text-align: center;
+    background-color: #d1f8ca;
+}

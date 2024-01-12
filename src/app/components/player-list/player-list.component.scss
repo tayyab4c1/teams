@@ -1,0 +1,112 @@
+/*
+.div-top-border {
+    border-radius: 3rem 3rem 0 0;
+    margin-top: -3rem;
+    background-color: white;
+    text-align: center;
+}
+
+.submit-btn {
+    position: fixed;
+    top: 87vh;
+    width: 100%;
+}
+
+.header {
+    position: fixed;
+    top: 12vh;
+    width: 100%;
+}
+
+.sticky-thead {
+    position: sticky;
+    top: 12vh;
+}
+
+.head{
+    text-align: center;
+    z-index: 1;
+    position: fixed;
+    top: 4.7vh;
+}
+*/
+.head {
+    background-color: #1B9AAA;
+    height: 3rem;
+    border-radius: 2rem 2rem 0 0;
+    text-align: center;
+    color: #F8FFE5;
+
+    h4 {
+        padding-top: 0.5rem;
+        font-weight: 700;
+    }
+}
+
+.player-tbl {
+    width: 90vw;
+    margin-left: 4vw;
+
+    table {
+        overflow-y: scroll;
+        height: 65vh;
+        display: block;
+
+        td {
+            width: 80vw;
+        }
+
+        .sticky-thead {
+            position: sticky;
+            top: 0vh;
+        }
+
+        tbody {
+            tr {
+                td {
+                    .del {
+                        color: orangered;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sub-btn {
+    text-align: center;
+    position: fixed;
+    width: 99vw;
+    bottom: 6vh;
+
+    button {
+        border-radius: 0;
+        background-color: #02c39a;
+        color: #f8f8f8;
+        font-weight: 700;
+        width: 75vw;
+    }
+}
+
+.add-player {
+    text-align: center;
+
+    button {
+        border-radius: 0;
+        background-color: #08d9f4;
+        color: #f8f8f8;
+        font-weight: 700;
+        width: 75vw;
+        font-size: large;
+    }
+
+    input {
+        width: 75vw;
+    }
+}
+
+.error {
+    width: 100%;
+    text-align: center;
+    color: orangered;
+}
